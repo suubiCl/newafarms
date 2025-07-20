@@ -30,6 +30,8 @@ A modern, responsive website for Newa Farms Limited - Uganda's premier beekeepin
 
 ## 🚀 Getting Started
 
+> **Note**: CSS build errors have been resolved as of the latest commit. The application now builds successfully for production deployment.
+
 ### Prerequisites
 
 - Node.js 18+ 
