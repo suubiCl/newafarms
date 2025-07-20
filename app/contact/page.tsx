@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, Phone, MapPin, Clock, User, ArrowRight } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
-import { AnimatedBee, DecorativeBee } from "@/components/animated-bee"
+import { AnimatedBee, DecorativeBee, SimpleBee } from "@/components/animated-bee"
 
 export default function ContactPage() {
   return (
@@ -22,16 +22,12 @@ export default function ContactPage() {
       />
 
       <div className="py-20 px-4 relative overflow-hidden">
-        {/* Creative Animated Bees for Contact Page */}
-        <AnimatedBee size="sm" delay={1} duration={16} path="circle" showTrail={false} className="top-1/6 right-1/5 w-44 h-44" />
-        <AnimatedBee size="md" delay={3} duration={20} path="curved" direction="left-to-right" showTrail={false} className="bottom-1/4 left-0 w-full h-28" />
-        <AnimatedBee size="lg" delay={5} duration={24} path="zigzag" showTrail={false} className="top-1/2 left-1/4 w-1/2 h-22" />
-        <AnimatedBee size="sm" delay={7} duration={14} path="straight" direction="right-to-left" showTrail={false} className="bottom-1/6 right-0 w-2/3 h-18" />
-        <AnimatedBee size="md" delay={9} duration={18} path="circle" showTrail={false} className="top-1/3 left-1/6 w-40 h-40" />
-        <AnimatedBee size="sm" delay={11} duration={22} path="curved" direction="left-to-right" showTrail={false} className="bottom-2/3 right-1/4 w-1/2 h-16" />
-        <AnimatedBee size="lg" delay={13} duration={26} path="straight" direction="right-to-left" showTrail={false} className="top-2/3 left-1/3 w-2/3 h-24" />
-        <AnimatedBee size="sm" delay={15} duration={15} path="zigzag" showTrail={false} className="bottom-1/3 left-1/5 w-1/3 h-18" />
-        <AnimatedBee size="md" delay={17} duration={19} path="curved" direction="left-to-right" showTrail={false} className="top-1/4 right-1/3 w-1/2 h-20" />
+        {/* Simple Animated Bees - Maximum 5 */}
+        <SimpleBee size="sm" delay={1} animation="circle" className="top-1/6 right-1/5" />
+        <SimpleBee size="md" delay={3} animation="drift-right" className="bottom-1/4 left-0" />
+        <SimpleBee size="lg" delay={5} animation="zigzag" className="top-1/2 left-0" />
+        <SimpleBee size="sm" delay={7} animation="drift-left" className="bottom-1/6 right-0" />
+        <SimpleBee size="md" delay={2} animation="float" className="top-1/3 left-1/6" />
 
         <div className="container mx-auto max-w-6xl relative">
           <div className="grid lg:grid-cols-2 gap-16">

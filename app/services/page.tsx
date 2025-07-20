@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { BookOpen, Users, Wrench, Eye, Home, ArrowRight, Star, Award } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
-import { AnimatedBee, DecorativeBee } from "@/components/animated-bee"
+import { AnimatedBee, DecorativeBee, SimpleBee } from "@/components/animated-bee"
 
 export default function ServicesPage() {
   const services = [
@@ -67,16 +67,12 @@ export default function ServicesPage() {
       />
 
       <div className="py-20 px-4 relative overflow-hidden">
-        {/* Animated Bees for Services Page */}
-        <AnimatedBee size="md" delay={1} duration={18} path="curved" direction="left-to-right" className="top-1/4 left-0 w-full h-24" />
-        <AnimatedBee size="sm" delay={3} duration={15} path="circle" className="bottom-1/3 right-1/4 w-40 h-40" />
-        <AnimatedBee size="lg" delay={5} duration={22} path="zigzag" className="top-2/3 left-1/3 w-2/3 h-20" />
-        <AnimatedBee size="md" delay={7} duration={19} path="curved" direction="right-to-left" className="bottom-1/5 right-0 w-3/4 h-26" />
-        <AnimatedBee size="sm" delay={9} duration={16} path="straight" direction="left-to-right" className="top-1/6 right-1/3 w-1/2 h-16" />
-        <AnimatedBee size="md" delay={11} duration={24} path="circle" className="top-1/2 left-1/5 w-44 h-44" />
-        <AnimatedBee size="sm" delay={13} duration={20} path="curved" direction="right-to-left" className="bottom-2/3 left-1/4 w-2/3 h-18" />
-        <AnimatedBee size="lg" delay={15} duration={17} path="zigzag" className="top-3/4 right-1/5 w-1/2 h-24" />
-        <AnimatedBee size="sm" delay={17} duration={21} path="straight" direction="left-to-right" className="bottom-1/4 left-1/6 w-1/3 h-14" />
+        {/* Simple Animated Bees - Maximum 5 */}
+        <SimpleBee size="md" delay={1} animation="drift-right" className="top-1/4 left-0" />
+        <SimpleBee size="sm" delay={3} animation="circle" className="bottom-1/3 right-1/4" />
+        <SimpleBee size="lg" delay={5} animation="zigzag" className="top-2/3 left-0" />
+        <SimpleBee size="md" delay={7} animation="drift-left" className="bottom-1/5 right-0" />
+        <SimpleBee size="sm" delay={2} animation="float" className="top-1/2 left-1/2" />
 
         <div className="container mx-auto max-w-6xl relative">
           {/* Services Grid */}

@@ -22,11 +22,7 @@ export default function HomePage() {
         <div className="absolute top-10 left-10 w-32 h-32 bg-newa-yellow-200 rounded-full opacity-20"></div>
         <div className="absolute bottom-10 right-10 w-40 h-40 bg-newa-green-200 rounded-full opacity-30"></div>
 
-        {/* More Animated Bees in Features Section */}
-        <AnimatedBee size="sm" delay={2} duration={20} path="curved" direction="left-to-right" className="top-1/4 left-0 w-1/2 h-16" />
-        <AnimatedBee size="md" delay={4} duration={25} path="zigzag" className="top-1/2 right-1/4 w-2/3 h-20" />
-        <AnimatedBee size="sm" delay={6} duration={18} path="circle" className="bottom-1/3 left-1/3 w-32 h-32" />
-        <AnimatedBee size="sm" delay={8} duration={22} path="straight" direction="right-to-left" className="top-3/4 right-0 w-1/3 h-14" />
+        {/* Note: BeeSwarm in hero already provides 5 bees, so no additional bees needed here */}
 
         <div className="container mx-auto max-w-6xl relative">
           <div className="text-center mb-16">
@@ -222,13 +218,7 @@ export default function HomePage() {
         <div className="absolute top-20 right-20 w-36 h-36 bg-newa-amber-200 rounded-full opacity-20"></div>
         <div className="absolute bottom-20 left-20 w-28 h-28 bg-newa-green-200 rounded-full opacity-25"></div>
 
-        {/* Animated Bees in Services Section */}
-        <AnimatedBee size="md" delay={18} duration={22} path="curved" direction="left-to-right" className="top-1/4 left-0 w-2/3 h-20" />
-        <AnimatedBee size="sm" delay={20} duration={18} path="circle" className="bottom-1/3 right-1/4 w-36 h-36" />
-        <AnimatedBee size="sm" delay={22} duration={15} path="straight" direction="right-to-left" className="top-2/3 right-0 w-1/2 h-16" />
-        <AnimatedBee size="lg" delay={24} duration={28} path="curved" direction="right-to-left" className="top-1/6 right-1/3 w-3/4 h-24" />
-        <AnimatedBee size="sm" delay={26} duration={16} path="zigzag" className="bottom-1/4 left-1/4 w-1/2 h-18" />
-        <AnimatedBee size="md" delay={28} duration={20} path="circle" className="top-1/2 left-1/6 w-40 h-40" />
+        {/* Note: Keeping page clean with only the 5 bees from hero section */}
 
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
@@ -321,11 +311,7 @@ export default function HomePage() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-newa-orange-500/20 rounded-full translate-x-48 translate-y-48"></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-newa-amber-400/10 rounded-full -translate-x-32 -translate-y-32"></div>
 
-        {/* Final Animated Bees in CTA Section */}
-        <AnimatedBee size="lg" delay={26} duration={25} path="curved" direction="right-to-left" className="top-1/3 right-0 w-full h-28" />
-        <AnimatedBee size="md" delay={28} duration={20} path="circle" className="bottom-1/4 left-1/3 w-48 h-48" />
-        <AnimatedBee size="sm" delay={30} duration={16} path="zigzag" className="top-1/2 left-0 w-2/3 h-20" />
-        <AnimatedBee size="md" delay={32} duration={18} path="curved" direction="left-to-right" className="bottom-1/3 right-1/4 w-1/2 h-24" />
+        {/* Note: Clean design with only the 5 bees from hero section */}
 
         <div className="container mx-auto max-w-5xl text-center relative">
           <Badge className="mb-8 bg-white/20 text-white border-white/30 px-8 py-3 text-sm font-bold tracking-wide">

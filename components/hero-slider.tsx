@@ -52,6 +52,8 @@ const slides = [
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  const [touchEnd, setTouchEnd] = useState<number | null>(null)
 
   useEffect(() => {
     if (!isAutoPlaying) return
@@ -78,8 +80,37 @@ export function HeroSlider() {
     setIsAutoPlaying(false)
   }
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextSlide()
+    } else if (isRightSwipe) {
+      prevSlide()
+    }
+  }
+
   return (
-    <div className="relative h-[80vh] min-h-[600px] max-h-[800px] overflow-hidden bg-gradient-to-br from-amber-50 via-yellow-100 to-orange-100">
+    <div
+      className="relative h-[70vh] sm:h-[75vh] lg:h-[80vh] min-h-[500px] sm:min-h-[600px] max-h-[800px] overflow-hidden bg-gradient-to-br from-amber-50 via-yellow-100 to-orange-100"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Creative Gold Background */}
       <div className="absolute inset-0">
         {/* Honeycomb and Bees Background Image */}
@@ -151,54 +182,54 @@ export function HeroSlider() {
             {/* Clean background without gradient */}
             <div className="absolute inset-0 bg-white/5"></div>
 
-            <div className="container mx-auto px-4 h-full">
-              <div className="grid lg:grid-cols-2 gap-12 items-center h-full py-8">
+            <div className="container mx-auto px-4 sm:px-6 h-full">
+              <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center h-full py-4 sm:py-6 lg:py-8">
                 {/* Content */}
-                <div className="space-y-6 animate-fade-in-up relative">
+                <div className="space-y-4 sm:space-y-6 animate-fade-in-up relative">
                   {/* Decorative line */}
-                  <div className="absolute -left-4 top-0 w-1 h-20 bg-gradient-to-b from-newa-green-500 to-newa-amber-500 rounded-full opacity-60"></div>
+                  <div className="absolute -left-3 sm:-left-4 top-0 w-0.5 sm:w-1 h-12 sm:h-16 lg:h-20 bg-gradient-to-b from-newa-green-500 to-newa-amber-500 rounded-full opacity-60"></div>
 
                   {/* Accent Badge */}
-                  <div className="inline-flex items-center space-x-3 bg-white/98 backdrop-blur-md px-6 py-3 rounded-xl shadow-2xl border-2 border-amber-200/50 hover:border-amber-300 transition-all duration-300 hover:scale-105 hover:shadow-3xl">
-                    <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
-                      <IconComponent className="w-4 h-4 text-white" />
+                  <div className="inline-flex items-center space-x-2 sm:space-x-3 bg-white/98 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-3 rounded-xl shadow-2xl border-2 border-amber-200/50 hover:border-amber-300 transition-all duration-300 hover:scale-105 hover:shadow-3xl">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-lg flex items-center justify-center shadow-lg">
+                      <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                     </div>
-                    <span className="text-sm font-bold text-amber-800 tracking-wide">{slide.accent}</span>
+                    <span className="text-xs sm:text-sm font-bold text-amber-800 tracking-wide">{slide.accent}</span>
                   </div>
 
                   {/* Main Content */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-amber-600 to-yellow-600 rounded-full shadow-sm"></div>
-                      <h2 className="text-xs font-bold text-amber-700 uppercase tracking-[0.2em] font-mono bg-amber-50/80 px-3 py-1 rounded-md border border-amber-200/50">
+                      <div className="w-6 sm:w-8 h-0.5 bg-gradient-to-r from-amber-600 to-yellow-600 rounded-full shadow-sm"></div>
+                      <h2 className="text-[10px] sm:text-xs font-bold text-amber-700 uppercase tracking-[0.15em] sm:tracking-[0.2em] font-mono bg-amber-50/80 px-2 sm:px-3 py-1 rounded-md border border-amber-200/50">
                         {slide.subtitle}
                       </h2>
                     </div>
 
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight tracking-tight">
                       <span className="bg-gradient-to-r from-amber-900 via-yellow-800 to-amber-900 bg-clip-text text-transparent drop-shadow-sm">
                         {slide.title}
                       </span>
                     </h1>
 
                     <div className="relative">
-                      <p className="text-lg md:text-xl text-amber-900/80 leading-relaxed max-w-xl font-light pl-4 border-l-2 border-amber-400/60 bg-white/30 backdrop-blur-sm rounded-r-lg py-2 pr-4">
+                      <p className="text-sm sm:text-lg md:text-xl text-amber-900/80 leading-relaxed max-w-xl font-light pl-3 sm:pl-4 border-l-2 border-amber-400/60 bg-white/30 backdrop-blur-sm rounded-r-lg py-2 pr-3 sm:pr-4">
                         {slide.description}
                       </p>
                     </div>
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
                     <div className="relative group">
                       <Button
                         asChild
-                        className="relative overflow-hidden bg-gradient-to-r from-newa-green-600 to-newa-green-700 hover:from-newa-green-700 hover:to-newa-green-800 text-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 px-8 py-4 text-base font-semibold rounded-xl border border-newa-green-500"
+                        className="relative overflow-hidden bg-gradient-to-r from-newa-green-600 to-newa-green-700 hover:from-newa-green-700 hover:to-newa-green-800 text-white shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-xl border border-newa-green-500 w-full sm:w-auto min-h-[48px]"
                       >
-                        <Link href={slide.ctaLink} className="flex items-center space-x-2">
+                        <Link href={slide.ctaLink} className="flex items-center justify-center space-x-2">
                           <span>{slide.cta}</span>
-                          <div className="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
-                            <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white/20 rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"></div>
                           </div>
                         </Link>
                       </Button>
@@ -209,11 +240,11 @@ export function HeroSlider() {
                       <Button
                         asChild
                         variant="outline"
-                        className="relative overflow-hidden border-2 border-newa-orange-400 text-newa-orange-600 hover:text-white bg-white/95 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 px-8 py-4 text-base font-semibold rounded-xl"
+                        className="relative overflow-hidden border-2 border-newa-orange-400 text-newa-orange-600 hover:text-white bg-white/95 backdrop-blur-md shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-xl w-full sm:w-auto min-h-[48px]"
                       >
-                        <Link href="/about" className="flex items-center space-x-2">
+                        <Link href="/about" className="flex items-center justify-center space-x-2">
                           <span>Learn Our Story</span>
-                          <div className="w-1 h-1 bg-newa-orange-500 rounded-full group-hover:w-4 group-hover:h-4 transition-all duration-300"></div>
+                          <div className="w-1 h-1 bg-newa-orange-500 rounded-full group-hover:w-3 group-hover:h-3 sm:group-hover:w-4 sm:group-hover:h-4 transition-all duration-300"></div>
                         </Link>
                       </Button>
                       <div className="absolute inset-0 bg-gradient-to-r from-newa-orange-500 to-newa-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left rounded-xl pointer-events-none"></div>
@@ -222,37 +253,37 @@ export function HeroSlider() {
                 </div>
 
                 {/* Image */}
-                <div className="relative animate-fade-in-right lg:justify-self-end" style={{ animationDelay: "0.3s" }}>
+                <div className="relative animate-fade-in-right lg:justify-self-end order-first lg:order-last" style={{ animationDelay: "0.3s" }}>
                   {/* Background decorative elements */}
-                  <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-newa-amber-200 to-newa-orange-300 rounded-full opacity-20 blur-lg"></div>
-                  <div className="absolute -bottom-3 -left-3 w-16 h-16 bg-gradient-to-br from-newa-green-200 to-newa-green-400 rounded-full opacity-30 blur-md"></div>
+                  <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-20 sm:h-20 bg-gradient-to-br from-newa-amber-200 to-newa-orange-300 rounded-full opacity-20 blur-lg"></div>
+                  <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 w-10 h-10 sm:w-16 sm:h-16 bg-gradient-to-br from-newa-green-200 to-newa-green-400 rounded-full opacity-30 blur-md"></div>
 
                   {/* Main image container */}
                   <div className="relative group">
                     {/* Image frame */}
-                    <div className="relative rounded-2xl overflow-hidden shadow-xl transform group-hover:scale-[1.02] transition-all duration-500 bg-white p-2">
-                      <div className="rounded-xl overflow-hidden relative">
+                    <div className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl transform group-hover:scale-[1.02] transition-all duration-500 bg-white p-1 sm:p-2">
+                      <div className="rounded-lg sm:rounded-xl overflow-hidden relative">
                         <Image
                           src={slide.image || "/placeholder.svg"}
                           alt={slide.title}
                           width={600}
                           height={500}
-                          className="w-full h-[350px] md:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105"
+                          className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[450px] object-cover transition-transform duration-500 group-hover:scale-105"
                         />
 
                         {/* Elegant overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                         {/* Floating elements */}
-                        <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                          <div className="w-4 h-4 bg-gradient-to-br from-newa-green-500 to-newa-amber-500 rounded-md"></div>
+                        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+                          <div className="w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-br from-newa-green-500 to-newa-amber-500 rounded-sm sm:rounded-md"></div>
                         </div>
                       </div>
                     </div>
 
                     {/* Decorative corner elements */}
-                    <div className="absolute -top-1 -left-1 w-6 h-6 border-l-2 border-t-2 border-newa-green-400 rounded-tl-md opacity-60"></div>
-                    <div className="absolute -bottom-1 -right-1 w-6 h-6 border-r-2 border-b-2 border-newa-amber-400 rounded-br-md opacity-60"></div>
+                    <div className="absolute -top-1 -left-1 w-4 h-4 sm:w-6 sm:h-6 border-l-2 border-t-2 border-newa-green-400 rounded-tl-md opacity-60"></div>
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 border-r-2 border-b-2 border-newa-amber-400 rounded-br-md opacity-60"></div>
                   </div>
                 </div>
               </div>
@@ -264,36 +295,36 @@ export function HeroSlider() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/95 backdrop-blur-md hover:bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center group transform hover:scale-110 border-2 border-white/50 hover:border-newa-green-200"
+        className="absolute left-2 sm:left-4 lg:left-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white/95 backdrop-blur-md hover:bg-white rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center group transform hover:scale-110 border-2 border-white/50 hover:border-newa-green-200 touch-manipulation"
         aria-label="Previous slide"
       >
         <div className="relative">
-          <ChevronLeft className="w-6 h-6 text-newa-green-700 group-hover:text-newa-green-800 transition-all duration-300 transform group-hover:-translate-x-0.5" />
-          <div className="absolute inset-0 w-6 h-6 bg-newa-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-newa-green-700 group-hover:text-newa-green-800 transition-all duration-300 transform group-hover:-translate-x-0.5" />
+          <div className="absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-newa-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
         </div>
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-8 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/95 backdrop-blur-md hover:bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center group transform hover:scale-110 border-2 border-white/50 hover:border-newa-green-200"
+        className="absolute right-2 sm:right-4 lg:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-white/95 backdrop-blur-md hover:bg-white rounded-xl sm:rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 flex items-center justify-center group transform hover:scale-110 border-2 border-white/50 hover:border-newa-green-200 touch-manipulation"
         aria-label="Next slide"
       >
         <div className="relative">
-          <ChevronRight className="w-6 h-6 text-newa-green-700 group-hover:text-newa-green-800 transition-all duration-300 transform group-hover:translate-x-0.5" />
-          <div className="absolute inset-0 w-6 h-6 bg-newa-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-newa-green-700 group-hover:text-newa-green-800 transition-all duration-300 transform group-hover:translate-x-0.5" />
+          <div className="absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-newa-green-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
         </div>
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow-lg border border-white/50">
+      <div className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 flex space-x-1.5 sm:space-x-2 bg-white/90 backdrop-blur-md px-3 sm:px-4 py-2 rounded-lg sm:rounded-xl shadow-lg border border-white/50">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`relative overflow-hidden rounded-full transition-all duration-300 transform hover:scale-110 ${
+            className={`relative overflow-hidden rounded-full transition-all duration-300 transform hover:scale-110 touch-manipulation ${
               index === currentSlide
-                ? "w-8 h-3 bg-gradient-to-r from-newa-green-600 to-newa-amber-500 shadow-md"
-                : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
+                ? "w-6 h-2.5 sm:w-8 sm:h-3 bg-gradient-to-r from-newa-green-600 to-newa-amber-500 shadow-md"
+                : "w-2.5 h-2.5 sm:w-3 sm:h-3 bg-gray-300 hover:bg-gray-400"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           >
