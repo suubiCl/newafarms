@@ -338,7 +338,12 @@ export default function ProductsPage() {
                         style={{ width: 'auto', height: 'auto' }}
                       />
                       <div className="absolute top-4 right-4">
-                        <Badge className={`bg-${product.color}-500 text-white shadow-lg px-3 py-2`}>
+                        <Badge className={`text-white shadow-lg px-3 py-2 ${
+                          product.color === 'newa-green' ? 'bg-newa-green-500' :
+                          product.color === 'newa-orange' ? 'bg-newa-orange-500' :
+                          product.color === 'newa-amber' ? 'bg-newa-amber-500' :
+                          'bg-newa-green-500'
+                        }`}>
                           <IconComponent className="w-4 h-4 mr-2" />
                           {product.badge}
                         </Badge>
@@ -348,7 +353,12 @@ export default function ProductsPage() {
                     </div>
                     <CardContent className="p-6">
                       <div className="mb-4">
-                        <Badge variant="outline" className={`text-${product.color}-700 border-${product.color}-200 mb-3`}>
+                        <Badge variant="outline" className={`mb-3 ${
+                          product.color === 'newa-green' ? 'text-newa-green-700 border-newa-green-200' :
+                          product.color === 'newa-orange' ? 'text-newa-orange-700 border-newa-orange-200' :
+                          product.color === 'newa-amber' ? 'text-newa-amber-700 border-newa-amber-200' :
+                          'text-newa-green-700 border-newa-green-200'
+                        }`}>
                           {product.category}
                         </Badge>
                         <h3 className="text-xl font-display font-bold text-gray-900 mb-3">{product.name}</h3>
@@ -359,7 +369,12 @@ export default function ProductsPage() {
                         <div className="grid grid-cols-1 gap-2">
                           {product.features.map((feature, featureIndex) => (
                             <div key={featureIndex} className="flex items-center text-xs text-gray-700">
-                              <CheckCircle className={`w-3 h-3 text-${product.color}-500 mr-2 flex-shrink-0`} />
+                              <CheckCircle className={`w-3 h-3 mr-2 flex-shrink-0 ${
+                                product.color === 'newa-green' ? 'text-newa-green-500' :
+                                product.color === 'newa-orange' ? 'text-newa-orange-500' :
+                                product.color === 'newa-amber' ? 'text-newa-amber-500' :
+                                'text-newa-green-500'
+                              }`} />
                               {feature}
                             </div>
                           ))}
@@ -473,7 +488,13 @@ export default function ProductsPage() {
                   }
                 ].map((item, index) => (
                   <div key={index} className="text-center group">
-                    <div className={`w-16 h-16 bg-gradient-to-br from-${item.color}-400 to-${item.color}-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 ${
+                      item.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                      item.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                      item.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                      item.color === 'newa-yellow' ? 'bg-gradient-to-br from-newa-yellow-400 to-newa-yellow-600' :
+                      'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                    }`}>
                       <item.icon className="w-8 h-8 text-white" />
                     </div>
                     <h4 className="text-lg font-display font-bold text-gray-900 mb-2">{item.title}</h4>
@@ -525,7 +546,13 @@ export default function ProductsPage() {
                     },
                   ].map((item, index) => (
                     <div key={index} className="flex items-start space-x-4">
-                      <div className={`w-10 h-10 bg-${item.color}-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0`}>
+                      <div className={`w-10 h-10 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 ${
+                        item.color === 'newa-green' ? 'bg-newa-green-500' :
+                        item.color === 'newa-orange' ? 'bg-newa-orange-500' :
+                        item.color === 'newa-amber' ? 'bg-newa-amber-500' :
+                        item.color === 'newa-yellow' ? 'bg-newa-yellow-500' :
+                        'bg-newa-green-500'
+                      }`}>
                         {item.step}
                       </div>
                       <div>

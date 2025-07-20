@@ -190,9 +190,19 @@ export default function ContactPage() {
                     return (
                       <div key={index} className="flex items-start space-x-4 group">
                         <div
-                          className={`w-14 h-14 bg-${item.color}-100 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
+                          className={`w-14 h-14 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 flex-shrink-0 ${
+                            item.color === 'newa-green' ? 'bg-newa-green-100' :
+                            item.color === 'newa-orange' ? 'bg-newa-orange-100' :
+                            item.color === 'newa-amber' ? 'bg-newa-amber-100' :
+                            'bg-newa-green-100'
+                          }`}
                         >
-                          <IconComponent className={`w-6 h-6 text-${item.color}-600`} />
+                          <IconComponent className={`w-6 h-6 ${
+                            item.color === 'newa-green' ? 'text-newa-green-600' :
+                            item.color === 'newa-orange' ? 'text-newa-orange-600' :
+                            item.color === 'newa-amber' ? 'text-newa-amber-600' :
+                            'text-newa-green-600'
+                          }`} />
                         </div>
                         <div>
                           <h3 className="font-display font-bold text-gray-900 mb-2 group-hover:text-newa-green-700 transition-colors duration-300">

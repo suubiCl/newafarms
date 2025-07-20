@@ -83,14 +83,24 @@ export default function HomePage() {
                 >
                   <CardContent className="space-y-4">
                     <div
-                      className={`w-20 h-20 bg-gradient-to-br from-${feature.color}-400 to-${feature.color}-600 rounded-3xl flex items-center justify-center mx-auto`}
+                      className={`w-20 h-20 rounded-3xl flex items-center justify-center mx-auto ${
+                        feature.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                        feature.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                        feature.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                        'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                      }`}
                     >
                       <IconComponent className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-2xl font-display font-bold text-gray-900">{feature.title}</h3>
                     <p className="text-gray-600 leading-relaxed font-light">{feature.description}</p>
                     <div className="flex justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                      <ArrowRight className={`w-6 h-6 text-${feature.color}-600`} />
+                      <ArrowRight className={`w-6 h-6 ${
+                        feature.color === 'newa-green' ? 'text-newa-green-600' :
+                        feature.color === 'newa-orange' ? 'text-newa-orange-600' :
+                        feature.color === 'newa-amber' ? 'text-newa-amber-600' :
+                        'text-newa-green-600'
+                      }`} />
                     </div>
                   </CardContent>
                 </Card>
@@ -167,7 +177,12 @@ export default function HomePage() {
                     />
                     <div className="absolute top-4 right-4">
                       <Badge
-                        className={`bg-${product.color}-500 text-white shadow-lg hover:scale-110 transition-transform duration-300`}
+                        className={`text-white shadow-lg hover:scale-110 transition-transform duration-300 ${
+                          product.color === 'newa-green' ? 'bg-newa-green-500' :
+                          product.color === 'newa-orange' ? 'bg-newa-orange-500' :
+                          product.color === 'newa-amber' ? 'bg-newa-amber-500' :
+                          'bg-newa-green-500'
+                        }`}
                       >
                         <BadgeIcon className="w-4 h-4 mr-2" />
                         {product.badge}

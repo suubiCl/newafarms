@@ -9,6 +9,22 @@ const config: Config = {
     "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    // Newa color classes that might be used dynamically
+    'bg-newa-green-100', 'bg-newa-green-200', 'bg-newa-green-400', 'bg-newa-green-500', 'bg-newa-green-600',
+    'bg-newa-orange-100', 'bg-newa-orange-200', 'bg-newa-orange-400', 'bg-newa-orange-500', 'bg-newa-orange-600',
+    'bg-newa-amber-100', 'bg-newa-amber-200', 'bg-newa-amber-400', 'bg-newa-amber-500', 'bg-newa-amber-600',
+    'bg-newa-yellow-100', 'bg-newa-yellow-200', 'bg-newa-yellow-400', 'bg-newa-yellow-500', 'bg-newa-yellow-600',
+    'text-newa-green-600', 'text-newa-green-700', 'text-newa-green-800',
+    'text-newa-orange-600', 'text-newa-orange-700', 'text-newa-orange-800',
+    'text-newa-amber-600', 'text-newa-amber-700', 'text-newa-amber-800',
+    'text-newa-yellow-600', 'text-newa-yellow-700', 'text-newa-yellow-800',
+    'border-newa-green-200', 'border-newa-orange-200', 'border-newa-amber-200',
+    'from-newa-green-400', 'to-newa-green-600',
+    'from-newa-orange-400', 'to-newa-orange-600',
+    'from-newa-amber-400', 'to-newa-amber-600',
+    'from-newa-yellow-400', 'to-newa-yellow-600',
+  ],
   prefix: "",
   theme: {
     container: {

@@ -107,7 +107,12 @@ export default function ServicesPage() {
                     <CardHeader className="pb-6">
                       <div className="flex items-center space-x-4 mb-4">
                         <div
-                          className={`w-16 h-16 bg-gradient-to-br from-${service.color}-400 to-${service.color}-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                          className={`w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                            service.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                            service.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                            service.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                            'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                          }`}
                         >
                           <IconComponent className="w-8 h-8 text-white" />
                         </div>
@@ -125,14 +130,24 @@ export default function ServicesPage() {
                         <div className="grid grid-cols-2 gap-3">
                           {service.features.map((feature, featureIndex) => (
                             <div key={featureIndex} className="flex items-center text-sm text-gray-600">
-                              <div className={`w-2 h-2 bg-${service.color}-500 rounded-full mr-3 flex-shrink-0`}></div>
+                              <div className={`w-2 h-2 rounded-full mr-3 flex-shrink-0 ${
+                                service.color === 'newa-green' ? 'bg-newa-green-500' :
+                                service.color === 'newa-orange' ? 'bg-newa-orange-500' :
+                                service.color === 'newa-amber' ? 'bg-newa-amber-500' :
+                                'bg-newa-green-500'
+                              }`}></div>
                               {feature}
                             </div>
                           ))}
                         </div>
                       </div>
                       <div className="flex justify-end mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <ArrowRight className={`w-6 h-6 text-${service.color}-600 animate-bounce-gentle`} />
+                        <ArrowRight className={`w-6 h-6 animate-bounce-gentle ${
+                          service.color === 'newa-green' ? 'text-newa-green-600' :
+                          service.color === 'newa-orange' ? 'text-newa-orange-600' :
+                          service.color === 'newa-amber' ? 'text-newa-amber-600' :
+                          'text-newa-green-600'
+                        }`} />
                       </div>
                     </CardContent>
                   </Card>
@@ -175,7 +190,12 @@ export default function ServicesPage() {
                   ].map((item, index) => (
                     <div key={index} className="flex items-start space-x-4 group">
                       <div
-                        className={`w-3 h-3 bg-${item.color}-500 rounded-full mt-2 group-hover:scale-125 transition-transform duration-300`}
+                        className={`w-3 h-3 rounded-full mt-2 group-hover:scale-125 transition-transform duration-300 ${
+                          item.color === 'newa-green' ? 'bg-newa-green-500' :
+                          item.color === 'newa-orange' ? 'bg-newa-orange-500' :
+                          item.color === 'newa-amber' ? 'bg-newa-amber-500' :
+                          'bg-newa-green-500'
+                        }`}
                       ></div>
                       <div>
                         <h4 className="font-display font-bold text-gray-900 mb-2 group-hover:text-newa-green-700 transition-colors duration-300">
@@ -268,9 +288,19 @@ export default function ServicesPage() {
                       return (
                         <div key={index} className="flex items-start space-x-4 group">
                           <div
-                            className={`w-8 h-8 bg-${item.color}-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 ${
+                              item.color === 'newa-green' ? 'bg-newa-green-100' :
+                              item.color === 'newa-orange' ? 'bg-newa-orange-100' :
+                              item.color === 'newa-amber' ? 'bg-newa-amber-100' :
+                              'bg-newa-green-100'
+                            }`}
                           >
-                            <IconComponent className={`w-4 h-4 text-${item.color}-600`} />
+                            <IconComponent className={`w-4 h-4 ${
+                              item.color === 'newa-green' ? 'text-newa-green-600' :
+                              item.color === 'newa-orange' ? 'text-newa-orange-600' :
+                              item.color === 'newa-amber' ? 'text-newa-amber-600' :
+                              'text-newa-green-600'
+                            }`} />
                           </div>
                           <span className="text-gray-700 font-light group-hover:text-gray-900 transition-colors duration-300">
                             {item.text}

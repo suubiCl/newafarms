@@ -122,7 +122,12 @@ export default function AboutPage() {
                   >
                     <CardContent className="space-y-6">
                       <div
-                        className={`w-20 h-20 bg-gradient-to-br from-${goal.color}-400 to-${goal.color}-600 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                        className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                          goal.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                          goal.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                          goal.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                          'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                        }`}
                       >
                         <IconComponent className="w-10 h-10 text-white" />
                       </div>
@@ -131,7 +136,12 @@ export default function AboutPage() {
                       </h3>
                       <p className="text-gray-600 leading-relaxed font-light">{goal.description}</p>
                       <div className="flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <ArrowRight className={`w-5 h-5 text-${goal.color}-600 animate-bounce-gentle`} />
+                        <ArrowRight className={`w-5 h-5 animate-bounce-gentle ${
+                          goal.color === 'newa-green' ? 'text-newa-green-600' :
+                          goal.color === 'newa-orange' ? 'text-newa-orange-600' :
+                          goal.color === 'newa-amber' ? 'text-newa-amber-600' :
+                          'text-newa-green-600'
+                        }`} />
                       </div>
                     </CardContent>
                   </Card>
@@ -176,11 +186,23 @@ export default function AboutPage() {
                 ].map((value, index) => (
                   <div key={index} className="text-center group">
                     <div
-                      className={`w-16 h-16 bg-gradient-to-br from-${value.color}-400 to-${value.color}-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 ${
+                        value.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                        value.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                        value.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                        value.color === 'newa-yellow' ? 'bg-gradient-to-br from-newa-yellow-400 to-newa-yellow-600' :
+                        'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                      }`}
                     >
                       <Award className="w-8 h-8 text-white" />
                     </div>
-                    <h4 className={`text-xl font-display font-bold text-${value.color}-700 mb-3`}>{value.title}</h4>
+                    <h4 className={`text-xl font-display font-bold mb-3 ${
+                      value.color === 'newa-green' ? 'text-newa-green-700' :
+                      value.color === 'newa-orange' ? 'text-newa-orange-700' :
+                      value.color === 'newa-amber' ? 'text-newa-amber-700' :
+                      value.color === 'newa-yellow' ? 'text-newa-yellow-700' :
+                      'text-newa-green-700'
+                    }`}>{value.title}</h4>
                     <p className="text-gray-600 font-light">{value.description}</p>
                   </div>
                 ))}

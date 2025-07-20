@@ -188,13 +188,23 @@ export default function CEOPage() {
                     <CardContent className="p-8">
                       <div className="flex items-start space-x-6">
                         <div
-                          className={`w-16 h-16 bg-gradient-to-br from-${milestone.color}-400 to-${milestone.color}-600 rounded-2xl flex items-center justify-center flex-shrink-0`}
+                          className={`w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 ${
+                            milestone.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                            milestone.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                            milestone.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                            'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                          }`}
                         >
                           <IconComponent className="w-8 h-8 text-white" />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center space-x-4 mb-4">
-                            <Badge className={`bg-${milestone.color}-100 text-${milestone.color}-800`}>
+                            <Badge className={`${
+                              milestone.color === 'newa-green' ? 'bg-newa-green-100 text-newa-green-800' :
+                              milestone.color === 'newa-orange' ? 'bg-newa-orange-100 text-newa-orange-800' :
+                              milestone.color === 'newa-amber' ? 'bg-newa-amber-100 text-newa-amber-800' :
+                              'bg-newa-green-100 text-newa-green-800'
+                            }`}>
                               {milestone.year}
                             </Badge>
                           </div>
@@ -272,7 +282,12 @@ export default function CEOPage() {
                   >
                     <CardContent className="space-y-6">
                       <div
-                        className={`w-20 h-20 bg-gradient-to-br from-${expertise.color}-400 to-${expertise.color}-600 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                        className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg ${
+                          expertise.color === 'newa-green' ? 'bg-gradient-to-br from-newa-green-400 to-newa-green-600' :
+                          expertise.color === 'newa-orange' ? 'bg-gradient-to-br from-newa-orange-400 to-newa-orange-600' :
+                          expertise.color === 'newa-amber' ? 'bg-gradient-to-br from-newa-amber-400 to-newa-amber-600' :
+                          'bg-gradient-to-br from-newa-green-400 to-newa-green-600'
+                        }`}
                       >
                         <IconComponent className="w-10 h-10 text-white" />
                       </div>
